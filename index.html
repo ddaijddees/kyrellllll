@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TRONG CAY GAY RUNG</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden;font-family:'Arial Black',sans-serif;background:#000}
+    body::before{content:'';position:fixed;inset:0;background:linear-gradient(45deg,#ff0000,#ff7700,#ffff00,#00ff00,#0000ff,#8a2be2,#ff00ff);background-size:600% 600%;animation:a 8s ease infinite,b 30s linear infinite;z-index:1;opacity:.85}
+    @keyframes a{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    @keyframes b{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .c{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;animation:d 5s linear infinite}
+    @keyframes d{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+    .t{font-size:12vw;font-weight:900;letter-spacing:10px;color:#fff;text-shadow:0 0 20px #fff,0 0 40px #ff00ff,0 0 60px #00ffff,0 0 80px #ffff00;animation:e 2s ease infinite;white-space:nowrap;user-select:none;position:relative;z-index:3;padding:30px 60px;text-transform:uppercase}
+    @keyframes e{
+      0%  {color:#ff0000;text-shadow:0 0 30px #ff0000,0 0 60px #ff0000}
+      14% {color:#ff7700;text-shadow:0 0 30px #ff7700,0 0 60px #ff7700}
+      28% {color:#ffff00;text-shadow:0 0 30px #ffff00,0 0 60px #ffff00}
+      42% {color:#00ff00;text-shadow:0 0 30px #00ff00,0 0 60px #00ff00}
+      57% {color:#0000ff;text-shadow:0 0 30px #0000ff,0 0 60px #0000ff}
+      71% {color:#8a2be2;text-shadow:0 0 30px #8a2be2,0 0 60px #8a2be2}
+      85% {color:#ff00ff;text-shadow:0 0 30px #ff00ff,0 0 60px #ff00ff}
+      100%{color:#ff0000;text-shadow:0 0 30px #ff0000,0 0 60px #ff0000}
+    }
+    .b{position:absolute;top:50%;left:50%;width:110%;height:110%;border:16px solid transparent;border-image:linear-gradient(45deg,#ff0000,#ff7700,#ffff00,#00ff00,#0000ff,#8a2be2,#ff00ff) 1;border-image-slice:1;border-radius:25px;transform:translate(-50%,-50%);animation:f 3s linear infinite,g 4s linear infinite reverse;box-shadow:0 0 35px #fff3,0 0 70px #f0ff,inset 0 0 45px #0ff5;z-index:2}
+    @keyframes f{0%{border-image-source:linear-gradient(45deg,#ff0000,#ff7700,#ffff00,#00ff00,#0000ff,#8a2be2,#ff00ff)}100%{border-image-source:linear-gradient(45deg,#ff00ff,#8a2be2,#0000ff,#00ff00,#ffff00,#ff7700,#ff0000)}}
+    @keyframes g{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+    .l{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at center,#fff4 0%,transparent 65%);animation:p 1.4s ease-in-out infinite alternate;z-index:1}
+    @keyframes p{from{opacity:.4;transform:scale(1)}to{opacity:.95;transform:scale(1.12)}}
+    ::-webkit-scrollbar{display:none}
+    #treeBtn{position:fixed;inset:0;background:linear-gradient(135deg,rgb(0, 100, 0),rgb(34, 139, 34));color:#fff;font-size:7vw;text-align:center;display:flex;align-items:center;justify-content:center;z-index:999;cursor:pointer;flex-direction:column;gap:25px;opacity:1;transition:all .6s ease;backdrop-filter:blur(5px)}
+    #treeBtn.hidden{opacity:0;pointer-events:none;transform:scale(0.8)}
+    #treeBtn span{font-size:10vw;animation:grow 1.5s ease-in-out infinite}
+    @keyframes grow{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+    #treeBtn div{font-size:3vw;color:#90EE90;text-shadow:0 0 10px #228B22}
+    #treeBtn::before{content:'';position:absolute;width:100px;height:100px;background:radial-gradient(circle,#90EE90,#228B22);border-radius:50%;filter:blur(20px);animation:pulseTree 2s infinite}
+    @keyframes pulseTree{0%,100%{transform:scale(1)}50%{transform:scale(1.5);opacity:0.7}}
+  </style>
+</head>
+<body>
+  <div class="l"></div>
+  <div class="c">
+    <div class="b"></div>
+    <div class="t">DUXG.FUN</div>
+  </div>
+  <audio id="m" loop preload="auto" muted>
+    <source src="/assets/love.mp3" type="audio/mpeg">
+  </audio>
+  <div id="treeBtn">
+    <span>🌳🌳🎄🎄🌲🌲</span>
+    <div>NHẤN VÀO Để TRỒNG 1 CÁI CÂY</div>
+  </div>
+  <script>
+    const treeBtn = document.getElementById('treeBtn');
+    const audio = document.getElementById('m');
+    const doc = document.documentElement;
+    function goFull() {
+      if (doc.requestFullscreen) doc.requestFullscreen();
+      else if (doc.webkitRequestFullscreen) doc.webkitRequestFullscreen();
+      else if (doc.msRequestFullscreen) doc.msRequestFullscreen();
+    }
+    treeBtn.onclick = () => {
+      treeBtn.classList.add('hidden');
+      audio.muted = false;
+      audio.play().catch(() => {});
+      goFull();
+      setInterval(() => {
+        if (audio.paused) audio.play().catch(() => {});
+        if (!document.fullscreenElement) goFull();
+      }, 1500);
+      sessionStorage.setItem('treePlanted', 'true');
+    };
+    if (sessionStorage.getItem('treePlanted')) {
+      setTimeout(() => treeBtn.click(), 600);
+    }
+  </script>
+</body>
+</html>
